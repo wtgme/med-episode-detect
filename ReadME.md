@@ -49,8 +49,8 @@ Open `results/viewer.html` in any browser to explore the timeline interactively.
 episode_pipe.py
     Input  : data/antipsychotic_prescriptions.csv
     Output : results/episodes.csv
-             results/episodes_sequences.pkl
-             results/episodes_polypharmacy.pkl
+             results/episodes_sequences.csv
+             results/episodes_polypharmacy.csv
 
 analyze_episodes.py
     Input  : results/episodes.csv

@@ -12,8 +12,8 @@ results/*
 
 # Pipeline results derived from sample data (safe to commit)
 !results/episodes.csv
-!results/episodes_sequences.pkl
-!results/episodes_polypharmacy.pkl
+!results/episodes_sequences.csv
+!results/episodes_polypharmacy.csv
 !results/viewer.html
 
 # IDE / tool settings

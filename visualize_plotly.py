@@ -102,11 +102,18 @@ def load_predictions() -> pd.DataFrame:
 
 def load_polypharmacy() -> dict:
     """Load polypharmacy detection results. Returns {} if not available."""
-    path = os.path.join(RESULTS_DIR, "episodes_polypharmacy.pkl")
+    path = os.path.join(RESULTS_DIR, "episodes_polypharmacy.csv")
     if not os.path.exists(path):
         return {}
-    with open(path, "rb") as f:
-        return pickle.load(f)
+    df = pd.read_csv(path)
+    if df.empty:
+        return {}
+    df["period_start"] = pd.to_datetime(df["period_start"], errors="coerce")
+    df["period_end"]   = pd.to_datetime(df["period_end"],   errors="coerce")
+    return {
+        pid: group.to_dict("records")
+        for pid, group in df.groupby("patient_id")
+    }
 
 
 # ---------------------------------------------------------------------------

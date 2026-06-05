@@ -6,13 +6,13 @@ patient's prescription history into discrete medication episodes, then
 identifies concurrent / transitional polypharmacy periods.
 
 Input : data/antipsychotic_prescriptions.csv  (one row per prescription)
-Output: results/episodes.csv, results/episodes_sequences.pkl,
-        results/episodes_polypharmacy.pkl
+Output: results/episodes.csv
+        results/episodes_sequences.csv
+        results/episodes_polypharmacy.csv
 """
 # pip install ruptures tqdm pandas numpy
 import multiprocessing
 import os
-import pickle
 import ruptures as rpt
 import pandas as pd
 import numpy as np
@@ -352,6 +352,17 @@ if __name__ == '__main__':
     timelines = pd.DataFrame(res, columns=['patient_id', 'order', 'medication', 'date', 'end_date', 'dose'])
 
     timelines.to_csv('results/episodes.csv', index=False)
-    pickle.dump(med_seqs, open('results/episodes_sequences.pkl', 'wb'))
-    pickle.dump(polys, open('results/episodes_polypharmacy.pkl', 'wb'))
+
+    seq_rows = [
+        {'patient_id': pid, 'order': i, 'medication': med}
+        for pid, seq in med_seqs.items()
+        for i, med in enumerate(seq)
+    ]
+    pd.DataFrame(seq_rows).to_csv('results/episodes_sequences.csv', index=False)
+
+    poly_cols = ['patient_id', 'type', 'primary_med', 'secondary_med',
+                 'period_start', 'period_end', 'overlap_days', 'secondary_mentions']
+    poly_rows = [period for periods in polys.values() for period in periods]
+    pd.DataFrame(poly_rows, columns=poly_cols).to_csv('results/episodes_polypharmacy.csv', index=False)
+
     print("Done.")
