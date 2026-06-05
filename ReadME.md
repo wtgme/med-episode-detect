@@ -1,5 +1,7 @@
 # Antipsychotic Episode Detection
 
+[![GitHub](https://img.shields.io/badge/GitHub-med--episode--detect-blue?logo=github)](https://github.com/wtgme/med-episode-detect)
+
 Detects medication episodes from structured prescription records and optional NLP extraction from clinical text. Uses PELT change-point detection to segment each patient's prescription history into discrete treatment episodes, then identifies polypharmacy periods around transitions.
 
 ---
@@ -119,6 +121,66 @@ python test_med_extraction.py
 
 ---
 
+## Extending to other medication classes
+
+The detection algorithm, statistics, and visualisation are fully generic — they operate on `drug_name`, `date`, and `patient_id` regardless of medication class. Only four things need to change.
+
+### 1. Replace the NLP gazetteer — `antipsychotics_lookup.json`
+
+Create a new JSON file with the same structure for your target medication class:
+
+```json
+[
+  {"gazetteer": "methotrexate",  "drug_name": "Methotrexate", "AP_type": "DMARD"},
+  {"gazetteer": "mtx",           "drug_name": "Methotrexate", "AP_type": "DMARD"},
+  {"gazetteer": "humira",        "drug_name": "Adalimumab",   "AP_type": "biologic"}
+]
+```
+
+Each entry maps a surface form (`gazetteer`) — including brand names and misspellings — to a normalised `drug_name`. The `AP_type` field can be repurposed as any classification label (drug class, generation, route, etc.).
+
+> If you are not using NLP extraction (`med_extraction.py`), this file can be ignored entirely.
+
+### 2. Update the gazetteer path in `med_extraction.py`
+
+```python
+# Line 24 — point to your new gazetteer file
+LOOKUP_PATH = Path(__file__).parent / "antipsychotics_lookup.json"
+```
+
+Also update the entity label on line 63 inside `_build_rules()`:
+
+```python
+rules.append(TargetRule(term, "Antipsychotic"))   # change label to match your drug class
+```
+
+### 3. Update the sample data generator — `generate_sample_data.py`
+
+Replace the `DRUGS` dictionary with your medication names and typical doses:
+
+```python
+DRUGS = {
+    'methotrexate': [10, 15, 20, 25],
+    'adalimumab':   [40],
+    'etanercept':   [25, 50],
+}
+```
+
+### 4. Update the viewer title — `visualize_plotly.py`
+
+Search for `"Antipsychotic Episode Timeline Viewer"` and replace with an appropriate title. This is cosmetic only and does not affect functionality.
+
+### Nothing else needs changing
+
+| Component | Status |
+|---|---|
+| `episode_pipe.py` — PELT detection, polypharmacy | Fully generic |
+| `analyze_episodes.py` — statistics | Fully generic |
+| `run_pipeline.py` — orchestration | Fully generic |
+| Input CSV format | Fully generic |
+
+---
+
 ## Security note
 
-`data/` and `results/` are excluded from version control (`.gitignore`). Never commit patient data to a repository.
+Real patient data must never be committed. `data/` and `results/` are covered by `.gitignore`, with explicit exceptions only for synthetic sample files. See `.gitignore` for the full list of permitted files.
