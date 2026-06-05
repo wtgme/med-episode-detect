@@ -1,0 +1,26 @@
+# Sensitive patient data — never commit
+data/
+results/
+
+# IDE / tool settings
+.claude/
+
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Editor / OS artefacts
+.DS_Store
+*.swp
+*.swo
