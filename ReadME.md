@@ -1,4 +1,4 @@
-# Antipsychotic Episode Detection
+# Medication Episode Detection
 
 [![GitHub](https://img.shields.io/badge/GitHub-med--episode--detect-blue?logo=github)](https://github.com/wtgme/med-episode-detect)
 
