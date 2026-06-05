@@ -1,0 +1,15 @@
+note_id,patient_id,note_date,text
+0,1001,2015-03-10,Patient commenced on Olanzapine 10mg. Tolerating well.
+1,1001,2015-06-01,Olanzapine dose increased to 15mg due to persistent symptoms.
+2,1001,2016-01-15,Decision to switch from olanzapine to risperidone 4mg given weight gain.
+3,1001,2016-04-20,Patient now established on Risperdal. Mental state stable.
+4,1002,2017-05-01,Started Quetiapine 200mg for psychotic symptoms.
+5,1002,2017-11-10,Quetiapine increased to 400mg. Good response noted.
+6,1002,2018-03-05,Continuing on Seroquel (quetiapine) 400mg. No side effects.
+7,1003,2014-09-01,Commenced aripipazole 15mg (Abilify). Review in 3 months.
+8,1003,2015-02-14,Aripiprazole 20mg. Patient non-compliant. Consider switch.
+9,1003,2015-08-20,Switched to Haloperidol 5mg depot injection.
+10,1003,2016-01-10,Continuing haloperidol. Extrapyramidal symptoms managed with procyclidine.
+11,1004,2019-06-01,Initiated Clozaril (clozapine) following two failed trials.
+12,1004,2019-12-01,Clozapine 350mg. WBC satisfactory. Continuing.
+13,1005,2020-01-01,Patient reviewed. No changes to management plan at this time.

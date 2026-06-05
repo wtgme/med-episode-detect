@@ -1,6 +1,20 @@
-# Sensitive patient data — never commit
-data/
-results/
+# Sensitive patient data — never commit real records.
+# Ignore everything in data/ and results/ by default;
+# negation rules below allow specific sample/test files through.
+data/*
+results/*
+
+# Synthetic sample data and test fixtures (safe to commit)
+!data/antipsychotic_prescriptions.csv
+!data/test_notes.csv
+!data/test_nlp_extracted.csv
+!data/test_merged_for_episodes.csv
+
+# Pipeline results derived from sample data (safe to commit)
+!results/episodes.csv
+!results/episodes_sequences.pkl
+!results/episodes_polypharmacy.pkl
+!results/viewer.html
 
 # IDE / tool settings
 .claude/
