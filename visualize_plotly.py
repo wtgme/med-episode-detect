@@ -2,7 +2,6 @@
 """
 Interactive Plotly-based antipsychotic episode timeline visualization.
 
-Speed: pickle cache on first run (~60s build), <2s on subsequent runs.
 Output: self-contained HTML with patient dropdown + Prev/Next navigation.
 
 Three visual layers per patient (back to front):
@@ -15,13 +14,11 @@ Usage:
     python visualize_plotly.py                       # auto-selects 20 patients
     python visualize_plotly.py --patient_ids 12345 67890  # specific patients
     python visualize_plotly.py --n 50                # top-N patients
-    python visualize_plotly.py --rebuild-cache       # force rebuild pickle cache
 """
 
 import argparse
 import json
 import os
-import pickle
 
 import pandas as pd
 import plotly.graph_objects as go
@@ -29,7 +26,6 @@ import plotly.colors
 
 DATA_DIR = "data"
 RESULTS_DIR = "results"
-CACHE_PATH = os.path.join(DATA_DIR, "aps_cache.pkl")
 
 # Only load these columns from the prescription CSV
 APS_NEEDED = {"drug_name", "patient_id", "date"}
@@ -55,40 +51,21 @@ POLY_STYLE = {
 # Data loading
 # ---------------------------------------------------------------------------
 
-def load_aps(force_rebuild: bool = False) -> pd.DataFrame:
-    """Load APS data from pickle cache (fast) or rebuild from CSVs (slow)."""
-    if not force_rebuild and os.path.exists(CACHE_PATH):
-        print(f"  Loading APS cache from {CACHE_PATH} ...")
-        with open(CACHE_PATH, "rb") as f:
-            aps = pickle.load(f)
-        return aps
-
-    print("  Building APS cache from CSVs (one-time, ~30-60 s) ...")
-    dfs = []
-    for fname in ["antipsychotic_prescriptions.csv"]:
-        path = os.path.join(DATA_DIR, fname)
-        # usecols callable strips BOM and spaces from header names
-        df = pd.read_csv(
-            path,
-            usecols=lambda c: c.strip().lstrip("﻿") in APS_NEEDED,
-            low_memory=False,
-        )
-        df.columns = df.columns.str.strip().str.lstrip("﻿")
-        dfs.append(df)
-
-    aps = pd.concat(dfs, ignore_index=True)
+def load_aps() -> pd.DataFrame:
+    """Load prescription data from CSV."""
+    path = os.path.join(DATA_DIR, "antipsychotic_prescriptions.csv")
+    # usecols callable strips BOM and spaces from header names
+    aps = pd.read_csv(
+        path,
+        usecols=lambda c: c.strip().lstrip("﻿") in APS_NEEDED,
+        low_memory=False,
+    )
+    aps.columns = aps.columns.str.strip().str.lstrip("﻿")
     aps["date"] = pd.to_datetime(aps["date"], errors="coerce")
     aps = aps.dropna(subset=["date"])
-
     aps["drug_name"] = aps["drug_name"].str.lower().str.strip()
     aps["drug_label"] = aps["drug_name"]
-    aps = aps[["patient_id", "drug_label", "date"]]
-
-    os.makedirs(DATA_DIR, exist_ok=True)
-    with open(CACHE_PATH, "wb") as f:
-        pickle.dump(aps, f, protocol=pickle.HIGHEST_PROTOCOL)
-    print(f"  Cache saved: {CACHE_PATH}")
-    return aps
+    return aps[["patient_id", "drug_label", "date"]]
 
 
 def load_predictions() -> pd.DataFrame:
@@ -585,14 +562,10 @@ def main():
         default=os.path.join(RESULTS_DIR, "viewer.html"),
         help="Output HTML path",
     )
-    parser.add_argument(
-        "--rebuild-cache", action="store_true",
-        help="Force rebuild of the APS pickle cache",
-    )
     args = parser.parse_args()
 
     print("Loading data ...")
-    aps = load_aps(force_rebuild=args.rebuild_cache)
+    aps = load_aps()
     print(f"  APS records: {len(aps):,}")
 
     pred = load_predictions()

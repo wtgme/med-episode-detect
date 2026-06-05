@@ -56,7 +56,7 @@ analyze_episodes.py
     Input  : results/episodes.csv
 
 visualize_plotly.py
-    Input  : data/antipsychotic_prescriptions.csv  (cached to data/aps_cache.pkl)
+    Input  : data/antipsychotic_prescriptions.csv
              results/episodes.csv
     Output : results/viewer.html
 
@@ -96,7 +96,6 @@ Extra columns are ignored.
 | `--n N` | Number of patients to display (default: 20) |
 | `--patient_ids ID [ID ...]` | Specific patient IDs to include |
 | `--out PATH` | Output HTML path (default: `results/viewer.html`) |
-| `--rebuild-cache` | Force rebuild of the APS pickle cache (required when switching datasets) |
 
 ---
 
