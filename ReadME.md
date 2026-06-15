@@ -82,6 +82,39 @@ Extra columns are ignored.
 
 ---
 
+## Tuning episode detection
+
+`episode_pipe.py` exposes its change-point sensitivity through a `CONFIG` block
+near the top of the file:
+
+```python
+CONFIG = {
+    'penalty': None,   # None → adaptive log(n); or a fixed number e.g. 7
+    'min_size': 2,
+}
+```
+
+| Parameter | Default | Effect |
+|---|---|---|
+| `penalty` | `None` | PELT penalty controlling episode granularity — **higher → fewer episodes**. `None` uses an adaptive BIC-style penalty `log(n)`, computed per patient so longer prescription histories require stronger evidence to split an episode. Set a fixed number (e.g. `7`) to apply the same penalty to every patient. |
+| `min_size` | `2` | Minimum number of prescriptions per episode segment. Raise to suppress very short episodes. |
+
+These two values are applied uniformly to all patients. To experiment, edit the
+`CONFIG` block and re-run `python episode_pipe.py` (or `python run_pipeline.py`).
+
+> **Note on `penalty=None` vs a fixed value:** a fixed penalty (such as the
+> earlier `penalty=7`) applies one evidence bar to every patient regardless of
+> how many prescriptions they have — too strict for short histories, too lax for
+> long ones. The adaptive `log(n)` default scales the bar with each patient's
+> signal length (`log(n) ≈ 7` only around n ≈ 1100 records).
+
+A few additional thresholds are currently hard-coded in `episode_pipe.py`: the
+minimum records per patient (`count > 5`), the polypharmacy transition window
+(`transition_window = 14` days), and the concurrent-therapy mention threshold
+(`min_mentions`). Adjust these directly in the source if needed.
+
+---
+
 ## `run_pipeline.py` flags
 
 | Flag | Description |
