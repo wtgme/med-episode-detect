@@ -20,6 +20,22 @@ from tqdm import tqdm
 
 
 # ---------------------------------------------------------------------------
+# Tunable parameters
+# ---------------------------------------------------------------------------
+# Adjust these to control change-point detection sensitivity for every patient.
+CONFIG = {
+    # PELT penalty controlling episode granularity (higher → fewer episodes).
+    #   None   → adaptive BIC-style penalty log(n), computed per patient so it
+    #            scales with the length of that patient's prescription history.
+    #   number → one fixed penalty applied to every patient (e.g. 7).
+    'penalty': None,
+
+    # Minimum number of prescriptions per episode segment (PELT min_size).
+    'min_size': 2,
+}
+
+
+# ---------------------------------------------------------------------------
 # Load and preprocess antipsychotic prescription data
 # ---------------------------------------------------------------------------
 aps = pd.read_csv('data/antipsychotic_prescriptions.csv', low_memory=False)
@@ -311,9 +327,11 @@ def _process_patient(args):
     Returns (patient_id, results, med_seq, polypharmacy_periods) on success, or
     (patient_id, None, error_string, None) on failure so the main process can log the error.
     """
-    patient_id, min_size = args
+    patient_id, min_size, penalty = args
     try:
-        r, med_seq, poly = medication_timelines_improved(patient_id, min_size=min_size)
+        r, med_seq, poly = medication_timelines_improved(
+            patient_id, penalty=penalty, min_size=min_size
+        )
         return patient_id, r, med_seq, poly
     except Exception as e:
         return patient_id, None, str(e), None
@@ -324,7 +342,10 @@ def _process_patient(args):
 # ---------------------------------------------------------------------------
 if __name__ == '__main__':
     patient_ids = aps['patient_id'].unique().tolist()
-    args_list = [(patient_id, 2) for patient_id in patient_ids]
+    args_list = [
+        (patient_id, CONFIG['min_size'], CONFIG['penalty'])
+        for patient_id in patient_ids
+    ]
 
     n_workers = max(1, os.cpu_count() - 1)  # leave one core free for the OS
     print(f"Processing {len(patient_ids)} patients using {n_workers} workers …")
