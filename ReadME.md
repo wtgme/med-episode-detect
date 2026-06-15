@@ -159,17 +159,18 @@ The detection algorithm, statistics, and visualisation are fully generic — the
 
 ### 1. Replace the NLP gazetteer — `antipsychotics_lookup.json`
 
-Create a new JSON file with the same structure for your target medication class:
+Create a new JSON file with the same structure for your target medication class. Each entry maps a surface form (`gazetteer`) — including brand names — to a normalised `drug_name`, as in the bundled `antipsychotics_lookup.json`:
 
 ```json
 [
-  {"gazetteer": "methotrexate",  "drug_name": "Methotrexate", "AP_type": "DMARD"},
-  {"gazetteer": "mtx",           "drug_name": "Methotrexate", "AP_type": "DMARD"},
-  {"gazetteer": "humira",        "drug_name": "Adalimumab",   "AP_type": "biologic"}
+  {"gazetteer": "olanzapine",  "drug_name": "olanzapine",  "AP_type": "atypical"},
+  {"gazetteer": "Zyprexa",     "drug_name": "olanzapine",  "AP_type": "atypical"},
+  {"gazetteer": "haloperidol", "drug_name": "haloperidol", "AP_type": "typical"},
+  {"gazetteer": "Haldol",      "drug_name": "haloperidol", "AP_type": "typical"}
 ]
 ```
 
-Each entry maps a surface form (`gazetteer`) — including brand names and misspellings — to a normalised `drug_name`. The `AP_type` field can be repurposed as any classification label (drug class, generation, route, etc.).
+The `AP_type` field can be repurposed as any classification label (drug class, generation, route, etc.).
 
 > The bundled `antipsychotics_lookup.json` gazetteer terms are based on the Mind antipsychotics A–Z (<https://www.mind.org.uk/information-support/drugs-and-treatments/antipsychotics-a-z/overview/>). Adjust the drug list, brand names, and classifications to suit your local formulary and needs.
 
@@ -194,9 +195,9 @@ Replace the `DRUGS` dictionary with your medication names and typical doses:
 
 ```python
 DRUGS = {
-    'methotrexate': [10, 15, 20, 25],
-    'adalimumab':   [40],
-    'etanercept':   [25, 50],
+    'olanzapine':   [5, 10, 15, 20],
+    'risperidone':  [2, 4, 6],
+    'haloperidol':  [5, 10, 15, 20],
 }
 ```
 
