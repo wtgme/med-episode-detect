@@ -171,6 +171,8 @@ Create a new JSON file with the same structure for your target medication class:
 
 Each entry maps a surface form (`gazetteer`) — including brand names and misspellings — to a normalised `drug_name`. The `AP_type` field can be repurposed as any classification label (drug class, generation, route, etc.).
 
+> The bundled `antipsychotics_lookup.json` gazetteer terms are based on the Mind antipsychotics A–Z (<https://www.mind.org.uk/information-support/drugs-and-treatments/antipsychotics-a-z/overview/>). Adjust the drug list, brand names, and classifications to suit your local formulary and needs.
+
 > If you are not using NLP extraction (`med_extraction.py`), this file can be ignored entirely.
 
 ### 2. Update the gazetteer path in `med_extraction.py`
