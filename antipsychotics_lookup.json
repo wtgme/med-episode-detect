@@ -1,0 +1,377 @@
+[
+  {
+    "gazetteer": "amisulpride",
+    "drug_name": "amisulpride",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Solian",
+    "drug_name": "amisulpride",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "aripiprazole",
+    "drug_name": "aripiprazole",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Abilify",
+    "drug_name": "aripiprazole",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Abilify Maintena",
+    "drug_name": "aripiprazole",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Arpoya",
+    "drug_name": "aripiprazole",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "asenapine",
+    "drug_name": "asenapine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Sycrest",
+    "drug_name": "asenapine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "benperidol",
+    "drug_name": "benperidol",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "Anquil",
+    "drug_name": "benperidol",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "cariprazine",
+    "drug_name": "cariprazine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Reagila",
+    "drug_name": "cariprazine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "chlorpromazine",
+    "drug_name": "chlorpromazine",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "Chloractil",
+    "drug_name": "chlorpromazine",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "Largactil",
+    "drug_name": "chlorpromazine",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "clozapine",
+    "drug_name": "clozapine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Clozaril",
+    "drug_name": "clozapine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Denzapine",
+    "drug_name": "clozapine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Zaponex",
+    "drug_name": "clozapine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "flupentixol",
+    "drug_name": "flupentixol",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "Depixol",
+    "drug_name": "flupentixol",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "Fluanxol",
+    "drug_name": "flupentixol",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "flupentixol decanoate",
+    "drug_name": "flupentixol",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "Psytixol",
+    "drug_name": "flupentixol",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "fluphenazine decanoate",
+    "drug_name": "fluphenazine",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "Modecate",
+    "drug_name": "fluphenazine",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "haloperidol",
+    "drug_name": "haloperidol",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "Haldol",
+    "drug_name": "haloperidol",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "Haldol decanoate",
+    "drug_name": "haloperidol",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "Halkid",
+    "drug_name": "haloperidol",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "haloperidol decanoate",
+    "drug_name": "haloperidol",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "levomepromazine",
+    "drug_name": "levomepromazine",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "Nozinan",
+    "drug_name": "levomepromazine",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "lurasidone",
+    "drug_name": "lurasidone",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Latuda",
+    "drug_name": "lurasidone",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "olanzapine",
+    "drug_name": "olanzapine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Zalasta",
+    "drug_name": "olanzapine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Zypadhera",
+    "drug_name": "olanzapine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Zyprexa",
+    "drug_name": "olanzapine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "olanzapine pamoate monohydrate",
+    "drug_name": "olanzapine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "paliperidone",
+    "drug_name": "paliperidone",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Invega",
+    "drug_name": "paliperidone",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Trevicta",
+    "drug_name": "paliperidone",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Xeplion",
+    "drug_name": "paliperidone",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "paliperidone palmitate",
+    "drug_name": "paliperidone",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "pericyazine",
+    "drug_name": "pericyazine",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "Neulactil",
+    "drug_name": "pericyazine",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "pimozide",
+    "drug_name": "pimozide",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "Orap",
+    "drug_name": "pimozide",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "prochlorperazine",
+    "drug_name": "prochlorperazine",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "Stemetil",
+    "drug_name": "prochlorperazine",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "promazine",
+    "drug_name": "promazine",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "quetiapine",
+    "drug_name": "quetiapine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Alaquet",
+    "drug_name": "quetiapine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Atrolak",
+    "drug_name": "quetiapine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Biquelle",
+    "drug_name": "quetiapine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Brancico",
+    "drug_name": "quetiapine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Mintreleg",
+    "drug_name": "quetiapine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Seroquel",
+    "drug_name": "quetiapine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Tenprolide",
+    "drug_name": "quetiapine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Zaluron",
+    "drug_name": "quetiapine",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "risperidone",
+    "drug_name": "risperidone",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Risperdal",
+    "drug_name": "risperidone",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Risperdal Consta",
+    "drug_name": "risperidone",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "sulpiride",
+    "drug_name": "sulpiride",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Dolmatil",
+    "drug_name": "sulpiride",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "Sulpor",
+    "drug_name": "sulpiride",
+    "AP_type": "atypical"
+  },
+  {
+    "gazetteer": "trifluoperazine",
+    "drug_name": "trifluoperazine",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "Stelazine",
+    "drug_name": "trifluoperazine",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "zuclopenthixol",
+    "drug_name": "zuclopenthixol",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "Clopixol",
+    "drug_name": "zuclopenthixol",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "Clopixol Acuphase",
+    "drug_name": "zuclopenthixol",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "zuclopenthixol decanoate",
+    "drug_name": "zuclopenthixol",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "Clopixol Concentrate",
+    "drug_name": "zuclopenthixol",
+    "AP_type": "typical"
+  },
+  {
+    "gazetteer": "zuclopenthixol dihydrochloride",
+    "drug_name": "zuclopenthixol",
+    "AP_type": "typical"
+  }
+]
