@@ -18,15 +18,34 @@ import pandas as pd
 random.seed(42)
 np.random.seed(42)
 
-# Drug name → list of typical doses (mg)
+# Drug name → list of typical doses (mg).
+# Keys match the normalised drug_name values in antipsychotics_lookup.json.
 DRUGS = {
-    'olanzapine':   [5, 10, 15, 20],
-    'risperidone':  [2, 4, 6],
-    'quetiapine':   [100, 200, 300, 400],
-    'aripiprazole': [10, 15, 20, 30],
-    'haloperidol':  [5, 10],
-    'amisulpride':  [200, 400, 600],
-    'paliperidone': [3, 6, 9],
+    # Atypical (second-generation)
+    'amisulpride':      [200, 400, 600, 800],
+    'aripiprazole':     [10, 15, 20, 30],
+    'asenapine':        [5, 10],
+    'cariprazine':      [1.5, 3, 4.5, 6],
+    'clozapine':        [100, 200, 300, 400],
+    'lurasidone':       [37, 74, 111, 148],
+    'olanzapine':       [5, 10, 15, 20],
+    'paliperidone':     [3, 6, 9, 12],
+    'quetiapine':       [100, 200, 300, 400],
+    'risperidone':      [2, 4, 6],
+    'sulpiride':        [200, 400, 800],
+    # Typical (first-generation)
+    'benperidol':       [0.25, 0.5, 1, 1.5],
+    'chlorpromazine':   [50, 100, 200, 300],
+    'flupentixol':      [3, 6, 9],
+    'fluphenazine':     [12.5, 25, 50, 100],
+    'haloperidol':      [5, 10, 15, 20],
+    'levomepromazine':  [25, 50, 100],
+    'pericyazine':      [15, 25, 75],
+    'pimozide':         [2, 4, 8],
+    'prochlorperazine': [5, 10, 15],
+    'promazine':        [25, 50, 100],
+    'trifluoperazine':  [5, 10, 15],
+    'zuclopenthixol':   [20, 25, 50],
 }
 
 N_PATIENTS = 60
